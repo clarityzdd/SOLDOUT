@@ -8,4 +8,36 @@
 
 <ion-content padding>
 
+  <ion-list>
+
+    <form (ngSubmit) = "productForm()">
+
+      <ion-item>
+        <ion-label floating>Producto</ion-label>
+        <ion-input type="text" [(ngModel)]="product.name" name="name"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Descripcion</ion-label>
+        <ion-input type="text" [(ngModel)]="product.description" name="description"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Precio</ion-label>
+        <ion-input type="text" [(ngModel)]="product.price" name="price"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked>Imagen</ion-label>
+        <ion-input type="file" [(ngModel)]="product.image" name="image"></ion-input>
+      </ion-item>
+
+      <br>
+      <button ion-button button-block type="submit" color="secondary">Enviar</button>
+
+    </form>
+
+  </ion-list>
+
+
 </ion-content>
