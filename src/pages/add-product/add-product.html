@@ -1,7 +1,7 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="primary">
     <ion-title>
-      About
+      Añadir producto
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -10,7 +10,7 @@
 
   <ion-list>
 
-    <form (ngSubmit) = "productForm()">
+    <form>
 
       <ion-item>
         <ion-label floating>Producto</ion-label>
@@ -24,7 +24,7 @@
 
       <ion-item>
         <ion-label floating>Precio</ion-label>
-        <ion-input type="text" [(ngModel)]="product.price" name="price"></ion-input>
+        <ion-input type="number" [(ngModel)]="product.price" name="price"></ion-input>
       </ion-item>
 
       <ion-item>
@@ -33,7 +33,7 @@
       </ion-item>
 
       <br>
-      <button ion-button button-block type="submit" color="secondary">Enviar</button>
+      <button ion-button block clear type="submit" color="primary" (click)="addProduct(product)">Enviar</button>
 
     </form>
 

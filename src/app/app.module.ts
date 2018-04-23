@@ -3,28 +3,29 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
-import { AboutPage } from '../pages/about/about';
-import { ContactPage } from '../pages/contact/contact';
-import { HomePage } from '../pages/home/home';
+import {ProductListPage} from "../pages/product-list/product-list";
+import {AddProductPage} from "../pages/add-product/add-product";
 import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { AngularFireModule } from "angularfire2";
-import {AngularFireDatabaseModule} from "angularfire2/database";
+import { AngularFireDatabaseModule } from "angularfire2/database";
 
-import { FIREBASE_CONFIG} from "./firebase.credentials";
+import { FIREBASE_CONFIG } from "./firebase.credentials";
+import {MyProductsPage} from "../pages/my-products/my-products";
+import {ProductListService} from "../services/product-list/product-list.service";
 
 
 
 @NgModule({
   declarations: [
     MyApp,
-    AboutPage,
-    ContactPage,
-    HomePage,
-    TabsPage
+    TabsPage,
+    AddProductPage,
+    ProductListPage,
+    MyProductsPage
   ],
   imports: [
     BrowserModule,
@@ -35,15 +36,16 @@ import { FIREBASE_CONFIG} from "./firebase.credentials";
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    AboutPage,
-    ContactPage,
-    HomePage,
-    TabsPage
+    TabsPage,
+    AddProductPage,
+    ProductListPage,
+    MyProductsPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    ProductListService
   ]
 })
 export class AppModule {}
