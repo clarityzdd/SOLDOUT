@@ -13,6 +13,39 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding class="master">
+
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Refrescar"
+      refreshingSpinner="dots">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <ion-card *ngFor="let product of productList$ | async">
+    <ion-item>
+      <ion-avatar item-start>
+        <img src="../../assets/icon/favicon.ico">
+      </ion-avatar>
+      <h2>Nombre usuario</h2>
+    </ion-item>
+
+    <img src="../../assets/imgs/llavero1.jpg"/>
+
+    <ion-card-content>
+      <ion-card-title>
+        {{product.name}}
+      </ion-card-title>
+      <p>
+        {{product.description}}
+      </p>
+      <br>
+      <a item item-icon-left assertive>
+        <ion-icon name="ios-pricetags-outline"></ion-icon>
+        {{product.price}}
+      </a>
+    </ion-card-content>
+  </ion-card>
 
 </ion-content>
