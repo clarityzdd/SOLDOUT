@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>
+      Añadir producto
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="master">
+
+  <ion-list>
+
+    <form>
+
+      <ion-item>
+        <ion-label floating>Producto</ion-label>
+        <ion-input type="text" [(ngModel)]="product.name" name="name"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Descripcion</ion-label>
+        <ion-input type="text" [(ngModel)]="product.description" name="description"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Precio</ion-label>
+        <ion-input type="number" [(ngModel)]="product.price" name="price"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked>Imagen</ion-label>
+        <ion-input type="file" [(ngModel)]="product.image" name="image"></ion-input>
+      </ion-item>
+
+      <br>
+      <button ion-button block clear type="submit" color="primary" (click)="addProduct(product)">Enviar</button>
+
+    </form>
+
+  </ion-list>
+
+
+</ion-content>
