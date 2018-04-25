@@ -10,7 +10,7 @@
 
   <ion-list>
 
-    <form>
+    <form #myForm="ngForm">
 
       <ion-item>
         <ion-label floating>Producto</ion-label>
@@ -25,18 +25,18 @@
       <ion-item>
         <ion-label floating>Precio</ion-label>
         <ion-input type="number" [(ngModel)]="product.price" name="price"></ion-input>
-      </ion-item>
+      </ion-item><br>
 
       <ion-item>
         <ion-label stacked>Imagen</ion-label>
-        <!--<ion-input type="file" [(ngModel)]="product.image" name="image"></ion-input>-->
-      </ion-item>
-      <button ion-button block (click)="takePhoto()">Foto</button>
-      <img [src]="product.image">
-      <h1>MOD</h1>
+      </ion-item><br>
 
-      <br>
-      <button ion-button block clear type="submit" color="primary" (click)="addProduct(product)">Enviar</button>
+      <img [src]="product.image"><br>
+
+      <button ion-button block (click)="takePhoto()">Camara</button>
+      <button ion-button block (click)="uploadPhoto()">Galeria</button><br>
+
+      <button ion-button block clear type="submit" color="primary" (click)="addProduct(product);myForm.reset()">Enviar</button>
 
     </form>
 

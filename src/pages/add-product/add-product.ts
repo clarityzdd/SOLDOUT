@@ -30,7 +30,7 @@ export class AddProductPage {
       this.navCtrl.push(MyProductsPage, {key: ref.key});  //Goes to MyProductsPage with key
       this.navCtrl.parent.select(2);
       this.navCtrl.popToRoot();
-    })
+    });
   }
 
   takePhoto() {
@@ -38,6 +38,23 @@ export class AddProductPage {
       quality: 100,
       destinationType: Camera.DestinationType.DATA_URL,
       sourceType: Camera.PictureSourceType.CAMERA,
+      allowEdit: true,
+      encodingType: Camera.EncodingType.JPEG,
+      targetWidth: 500,
+      targetHeight: 500,
+      saveToPhotoAlbum: false
+    };
+
+    Camera.getPicture(options).then((imageData) => {
+      this.product.image = `data:image/jpeg;base64,${imageData}`;
+    })
+  }
+
+  uploadPhoto() {
+    let options: CameraOptions = {
+      quality: 100,
+      destinationType: Camera.DestinationType.DATA_URL,
+      sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
       allowEdit: true,
       encodingType: Camera.EncodingType.JPEG,
       targetWidth: 500,
