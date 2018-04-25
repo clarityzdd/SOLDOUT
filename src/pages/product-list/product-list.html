@@ -23,29 +23,37 @@
     </ion-refresher-content>
   </ion-refresher>
 
-  <ion-card *ngFor="let product of productList$ | async">
-    <ion-item>
-      <ion-avatar item-start>
-        <img src="../../assets/icon/favicon.ico">
-      </ion-avatar>
-      <h2>Nombre usuario</h2>
+  <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+
+  <ion-list>
+    <ion-item *ngFor="let product of productList$ | async">
+
+      <ion-card>
+        <ion-item>
+          <ion-avatar item-start>
+            <img src="../../assets/icon/favicon.ico">
+          </ion-avatar>
+          <h2>Nombre usuario</h2>
+        </ion-item>
+
+        <img  [src]="product.image"/>
+
+        <ion-card-content>
+          <ion-card-title>
+            {{product.name}}
+          </ion-card-title>
+          <p>
+            {{product.description}}
+          </p>
+          <br>
+          <a item item-icon-left assertive>
+            <ion-icon name="ios-pricetags-outline"></ion-icon>
+            {{product.price}}€
+          </a>
+        </ion-card-content>
+      </ion-card>
+
     </ion-item>
-
-    <img  [src]="product.image"/>
-
-    <ion-card-content>
-      <ion-card-title>
-        {{product.name}}
-      </ion-card-title>
-      <p>
-        {{product.description}}
-      </p>
-      <br>
-      <a item item-icon-left assertive>
-        <ion-icon name="ios-pricetags-outline"></ion-icon>
-        {{product.price}}€
-      </a>
-    </ion-card-content>
-  </ion-card>
+  </ion-list>
 
 </ion-content>
