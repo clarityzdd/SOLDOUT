@@ -29,8 +29,11 @@
 
       <ion-item>
         <ion-label stacked>Imagen</ion-label>
-        <ion-input type="file" [(ngModel)]="product.image" name="image"></ion-input>
+        <!--<ion-input type="file" [(ngModel)]="product.image" name="image"></ion-input>-->
       </ion-item>
+      <button ion-button block (click)="takePhoto()">Foto</button>
+      <img [src]="product.image">
+      <h1>MOD</h1>
 
       <br>
       <button ion-button block clear type="submit" color="primary" (click)="addProduct(product)">Enviar</button>
