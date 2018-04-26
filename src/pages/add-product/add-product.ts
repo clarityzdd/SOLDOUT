@@ -7,6 +7,7 @@ import { Camera, CameraOptions} from "ionic-native";
 import {MyProductsPage} from "../my-products/my-products";
 
 import {ProductListService} from "../../services/product-list/product-list.service";
+import {AuthService} from "../../services/auth.service";
 
 @Component({
   selector: 'page-add-product',
@@ -19,12 +20,16 @@ export class AddProductPage {
     description: '',
     price: undefined,
     image: '',
+    uid: '',
   };
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public db: AngularFireDatabase, private list: ProductListService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public db: AngularFireDatabase, private list: ProductListService,
+              private auth: AuthService) {
   }
 
   addProduct(product: ProductItem) {
+    product.uid = this.auth.getUserUid();
+    console.log(this.product.uid);
     this.list.addProduct(product).then(ref => {
       console.log(ref.key); //Get key and show it on console
       this.navCtrl.push(MyProductsPage, {key: ref.key});  //Goes to MyProductsPage with key

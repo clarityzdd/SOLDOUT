@@ -19,8 +19,8 @@ export class ProductListService {
 
   getProductList () {
     if (!this.auth.user.uid) return;
-    //console.log('UID: ' + this.auth.user.uid + '; Email: ' + this.auth.getEmail() );
-    this.productListRef = this.db.list(`product-list/${this.auth.user.uid}`);
+    console.log('UID: ' + this.auth.user.uid + '; Email: ' + this.auth.getEmail() );
+    this.productListRef = this.db.list(`product-list/`);
     return this.productListRef;
   }
 
