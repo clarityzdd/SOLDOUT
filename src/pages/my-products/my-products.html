@@ -8,7 +8,7 @@
       <ion-icon name="log-out" item-left></ion-icon>
       Log out
     </button>
-    
+
   </ion-navbar>
 
 </ion-header>
@@ -24,33 +24,35 @@
     </ion-refresher-content>
   </ion-refresher>
 
-  <ion-card>
-    <ion-item>
-      <ion-avatar item-start>
-        <img src="../../assets/icon/favicon.ico">
-      </ion-avatar>
-      <h2>Nombre usuario</h2>
-    </ion-item>
+  <ion-card *ngFor="let product of productList">
+    <div *ngIf="product.uid === this.auth.getUserUid()">
+      <ion-item>
+        <ion-avatar item-start>
+          <img src="../../assets/icon/favicon.ico">
+        </ion-avatar>
+        <h2>Nombre usuario</h2>
+      </ion-item>
 
-    <img  [src]=""/>
+      <img  [src]="product.image"/>
 
-    <ion-card-content>
-      <ion-card-title>
-        Nombre producto
-      </ion-card-title>
-      <p>
-        Descripcion
-      </p>
-      <br>
-      <a item item-icon-left assertive>
-        <ion-icon name="ios-pricetags-outline"></ion-icon>
-        XX€
-      </a><br>
+      <ion-card-content>
+        <ion-card-title>
+          {{product.name}}
+        </ion-card-title>
+        <p>
+          {{product.description}}
+        </p>
+        <br>
+        <a item item-icon-left assertive>
+          <ion-icon name="ios-pricetags-outline"></ion-icon>
+          {{product.price}}€
+        </a>
 
-      <button ion-button (click)="editProduct()">Editar</button>
-      <button ion-button (click)="deleteProduct()">Borrar</button>
+        <button ion-button round block clear color="primary" (click)="editProduct({product: product})">Editar</button>
+        <button ion-button round block clear color="primary" (click)="deleteProduct(product)">Borrar</button>
 
-    </ion-card-content>
+      </ion-card-content>
+    </div>
   </ion-card>
 
 </ion-content>

@@ -23,6 +23,7 @@ import {ProductListService} from "../services/product-list/product-list.service"
 import { AuthService} from "../services/auth.service";
 import { FIREBASE_CONFIG } from "../config/firebase.credentials";
 import {SearchProductPage} from "../pages/search-product/search-product";
+import {EditProductPage} from "../pages/edit-product/edit-product";
 
 
 
@@ -36,6 +37,7 @@ import {SearchProductPage} from "../pages/search-product/search-product";
     LoginPage,
     SignupPage,
     SearchProductPage,
+    EditProductPage,
   ],
   imports: [
     BrowserModule,
@@ -56,6 +58,7 @@ import {SearchProductPage} from "../pages/search-product/search-product";
     LoginPage,
     SignupPage,
     SearchProductPage,
+    EditProductPage,
   ],
   providers: [
     StatusBar,

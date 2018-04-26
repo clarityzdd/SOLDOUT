@@ -1,0 +1,52 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>EditProduct</ion-title>
+  </ion-navbar>
+
+  <ion-content padding class="master">
+
+    <ion-list>
+
+      <form #myForm="ngForm">
+
+        <ion-item>
+          <ion-label floating>Producto</ion-label>
+          <ion-input type="text" name="name"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating>Descripcion</ion-label>
+          <ion-input type="text" name="description"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating>Precio</ion-label>
+          <ion-input type="number" name="price"></ion-input>
+        </ion-item><br>
+
+
+        <ion-item>
+          <ion-label stacked>Imagen</ion-label>
+        </ion-item><br>
+
+        <img><br>
+
+        <button ion-button icon-only block large (click)="takePhoto()">
+          <ion-icon name="ios-camera"></ion-icon>
+        </button>
+        <br>
+        <button ion-button icon-only block large (click)="uploadPhoto()">
+          <ion-icon name="ios-images"></ion-icon>
+        </button><br>
+
+        <button ion-button round block clear type="submit" color="primary" (click)="saveProduct(product)">Enviar</button>
+
+      </form>
+
+    </ion-list>
+
+
+
+  </ion-content>
