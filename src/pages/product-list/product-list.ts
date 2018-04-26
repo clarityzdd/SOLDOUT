@@ -5,6 +5,7 @@ import {AddProductPage} from "../add-product/add-product";
 import {ProductListService} from "../../services/product-list/product-list.service";
 import {ProductItem} from "../../models/product-item/product-item.model";
 import {Observable} from "rxjs/Observable";
+import {AuthService} from "../../services/auth.service";
 
 @Component({
   selector: 'page-product-list',
@@ -14,7 +15,8 @@ export class ProductListPage {
 
   productList$: Observable<ProductItem []>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private list: ProductListService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private list: ProductListService,
+              private auth: AuthService) {
 
     this.productList$ = this.list
       .getProductList()    // Return DB list
