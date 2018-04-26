@@ -21,6 +21,7 @@ export class AddProductPage {
     price: undefined,
     image: '',
     uid: '',
+    key: '',
   };
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public db: AngularFireDatabase, private list: ProductListService,
@@ -29,12 +30,11 @@ export class AddProductPage {
 
   addProduct(product: ProductItem) {
     product.uid = this.auth.getUserUid();
-    console.log(this.product.uid);
     this.list.addProduct(product).then(ref => {
       console.log(ref.key); //Get key and show it on console
-      this.navCtrl.push(MyProductsPage, {key: ref.key});  //Goes to MyProductsPage with key
+      this.navCtrl.push(MyProductsPage, {key: ref.key}); //Goes to MyProductsPage with key
       this.navCtrl.parent.select(2);
-      this.navCtrl.popToRoot();
+      this.navCtrl.popTo(AddProductPage);
     });
   }
 

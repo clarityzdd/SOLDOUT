@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {ProductItem} from "../../models/product-item/product-item.model";
+import {MyProductsPage} from "../my-products/my-products";
+import {AuthService} from "../../services/auth.service";
+import {ProductListService} from "../../services/product-list/product-list.service";
 
 @IonicPage()
 @Component({
@@ -9,12 +12,18 @@ import {ProductItem} from "../../models/product-item/product-item.model";
 })
 export class EditProductPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  product: ProductItem;
 
+  constructor(public navCtrl: NavController, public navParams: NavParams, private auth: AuthService, private list: ProductListService) {
+    this.product = this.navParams.get('product');
+    console.log(this.product);
   }
 
-  ionViewDidLoad() {
-    console.log(this.navParams.get('product'));
+  saveProduct(product: ProductItem) {
+    this.list.editProduct(product)
+      .then(() => {
+        this.navCtrl.popTo(MyProductsPage);
+      })
   }
 
 }
