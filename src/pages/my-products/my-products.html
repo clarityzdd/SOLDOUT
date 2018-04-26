@@ -14,6 +14,43 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding class="master">
+
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Refrescar"
+      refreshingSpinner="dots">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <ion-card>
+    <ion-item>
+      <ion-avatar item-start>
+        <img src="../../assets/icon/favicon.ico">
+      </ion-avatar>
+      <h2>Nombre usuario</h2>
+    </ion-item>
+
+    <img  [src]=""/>
+
+    <ion-card-content>
+      <ion-card-title>
+        Nombre producto
+      </ion-card-title>
+      <p>
+        Descripcion
+      </p>
+      <br>
+      <a item item-icon-left assertive>
+        <ion-icon name="ios-pricetags-outline"></ion-icon>
+        XX€
+      </a><br>
+
+      <button ion-button (click)="editProduct()">Editar</button>
+      <button ion-button (click)="deleteProduct()">Borrar</button>
+
+    </ion-card-content>
+  </ion-card>
 
 </ion-content>

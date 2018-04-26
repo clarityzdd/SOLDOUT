@@ -1,11 +1,14 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import {AddProductPage} from "../add-product/add-product";
+import {SearchProductPage} from "../search-product/search-product";
 
 import {ProductListService} from "../../services/product-list/product-list.service";
 import {ProductItem} from "../../models/product-item/product-item.model";
 import {Observable} from "rxjs/Observable";
 import {AuthService} from "../../services/auth.service";
+
+import firebase from 'firebase';
 
 @Component({
   selector: 'page-product-list',
@@ -15,6 +18,9 @@ export class ProductListPage {
 
   productList$: Observable<ProductItem []>;
 
+  public searchProductList:Array<any>;   //List of products we are pulling from db
+  public loadedProductList:Array<any>;  //"Hack" for big list
+  public productRef:firebase.database.Reference;
   constructor(public navCtrl: NavController, public navParams: NavParams, private list: ProductListService,
               private auth: AuthService) {
 
@@ -28,7 +34,20 @@ export class ProductListPage {
             ...c.payload.val()
           })).reverse()
         }
-      )
+      );
+
+    this.productRef = firebase.database().ref('/product-list');
+
+    this.productRef.on('value', searchProductList => {
+      let products = [];
+      searchProductList.forEach( name => {
+        products.push(name.val());
+        return false;
+      });
+
+      this.searchProductList = products;
+      this.loadedProductList = products;
+    });
 
   }
 
@@ -38,12 +57,36 @@ export class ProductListPage {
     this.navCtrl.popToRoot();
   }
 
-  doRefresh(refresher) {
+  navSearchProductPage() {
+    this.navCtrl.push(SearchProductPage);
+  }
 
+  initializaItems(): void {
+    this.searchProductList = this.loadedProductList;
+  }
+
+  getItems(searchbar) {
+    this.initializaItems();
+
+    const value = searchbar.srcElement.value;
+
+    if (!value) return;
+
+    this.searchProductList = this.searchProductList.filter((v) => {
+      if(v.name && value) {
+        if (v.name.toLowerCase().indexOf(value.toLowerCase()) > -1) {
+          console.log("FUNCIONA");
+          return true;
+        }
+        return false;
+      }
+    });
+  }
+
+  doRefresh(refresher) {
     setTimeout(() => {
       refresher.complete();
     }, 2000);
-
   }
 
 }
