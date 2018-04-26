@@ -6,6 +6,7 @@ import {SearchProductPage} from "../search-product/search-product";
 import {ProductListService} from "../../services/product-list/product-list.service";
 import {ProductItem} from "../../models/product-item/product-item.model";
 import {Observable} from "rxjs/Observable";
+import {AuthService} from "../../services/auth.service";
 
 import firebase from 'firebase';
 
@@ -18,12 +19,10 @@ export class ProductListPage {
   productList$: Observable<ProductItem []>;
 
   public searchProductList:Array<any>;   //List of products we are pulling from db
-
   public loadedProductList:Array<any>;  //"Hack" for big list
-
   public productRef:firebase.database.Reference;
-
-  constructor(public navCtrl: NavController, public navParams: NavParams, private list: ProductListService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private list: ProductListService,
+              private auth: AuthService) {
 
     this.productList$ = this.list
       .getProductList()    // Return DB list
