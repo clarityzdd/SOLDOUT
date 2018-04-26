@@ -16,6 +16,7 @@ import { AngularFireDatabaseModule } from "angularfire2/database";
 import { FIREBASE_CONFIG } from "./firebase.credentials";
 import {MyProductsPage} from "../pages/my-products/my-products";
 import {ProductListService} from "../services/product-list/product-list.service";
+import {SearchProductPage} from "../pages/search-product/search-product";
 
 
 
@@ -25,7 +26,8 @@ import {ProductListService} from "../services/product-list/product-list.service"
     TabsPage,
     AddProductPage,
     ProductListPage,
-    MyProductsPage
+    MyProductsPage,
+    SearchProductPage,
   ],
   imports: [
     BrowserModule,
@@ -39,7 +41,8 @@ import {ProductListService} from "../services/product-list/product-list.service"
     TabsPage,
     AddProductPage,
     ProductListPage,
-    MyProductsPage
+    MyProductsPage,
+    SearchProductPage
   ],
   providers: [
     StatusBar,

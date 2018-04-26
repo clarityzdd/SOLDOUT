@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import {AddProductPage} from "../add-product/add-product";
+import {SearchProductPage} from "../search-product/search-product";
 
 import {ProductListService} from "../../services/product-list/product-list.service";
 import {ProductItem} from "../../models/product-item/product-item.model";
@@ -57,6 +58,10 @@ export class ProductListPage {
     this.navCtrl.popToRoot();
   }
 
+  navSearchProductPage() {
+    this.navCtrl.push(SearchProductPage);
+  }
+
   initializaItems(): void {
     this.searchProductList = this.loadedProductList;
   }
@@ -74,7 +79,6 @@ export class ProductListPage {
           console.log("FUNCIONA");
           return true;
         }
-        console.log(v.name);
         return false;
       }
     });
