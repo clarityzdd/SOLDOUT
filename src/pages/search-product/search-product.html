@@ -2,12 +2,7 @@
 <ion-header>
 
   <ion-navbar color="primary">
-    <ion-title>Articulos en venta</ion-title>
-    <ion-buttons end>
-      <button ion-button icon-only (click)="navToAddProductPage()">
-        <ion-icon name="add"></ion-icon>
-      </button>
-    </ion-buttons>
+    <ion-title>Buscador articulos</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -23,20 +18,18 @@
     </ion-refresher-content>
   </ion-refresher>
 
-  <div text-center>
-    <button ion-button round outline (click)="navSearchProductPage()">
-        <ion-icon name="search"></ion-icon> &nbsp; Buscar
-    </button>
-  </div>
+  <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
 
-  <ion-card *ngFor="let product of productList$ | async">
+  <ion-card *ngFor="let product of productList">
     <ion-item>
       <ion-avatar item-start>
         <img src="../../assets/icon/favicon.ico">
       </ion-avatar>
       <h2>Nombre usuario</h2>
     </ion-item>
+
     <img  [src]="product.image"/>
+
     <ion-card-content>
       <ion-card-title>
         {{product.name}}
@@ -52,4 +45,4 @@
     </ion-card-content>
   </ion-card>
 
-
+</ion-content>
