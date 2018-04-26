@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import {AngularFireDatabase} from "angularfire2/database";
 import { ProductItem } from "../../models/product-item/product-item.model";
-import { Camera, CameraOptions} from "ionic-native/";
+import { Camera, CameraOptions} from "ionic-native";
 
 import {MyProductsPage} from "../my-products/my-products";
 

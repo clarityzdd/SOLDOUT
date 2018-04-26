@@ -34,7 +34,7 @@ import {SearchProductPage} from "../pages/search-product/search-product";
     ProductListPage,
     MyProductsPage,
     LoginPage,
-    SignupPage
+    SignupPage,
     SearchProductPage,
   ],
   imports: [
@@ -54,8 +54,8 @@ import {SearchProductPage} from "../pages/search-product/search-product";
     ProductListPage,
     MyProductsPage,
     LoginPage,
-    SignupPage
-    SearchProductPage
+    SignupPage,
+    SearchProductPage,
   ],
   providers: [
     StatusBar,
