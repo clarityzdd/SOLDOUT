@@ -22,6 +22,7 @@ import { AngularFireModule } from "angularfire2";
 import {ProductListService} from "../services/product-list/product-list.service";
 import { AuthService} from "../services/auth.service";
 import { FIREBASE_CONFIG } from "../config/firebase.credentials";
+import {SearchProductPage} from "../pages/search-product/search-product";
 
 
 
@@ -34,6 +35,7 @@ import { FIREBASE_CONFIG } from "../config/firebase.credentials";
     MyProductsPage,
     LoginPage,
     SignupPage
+    SearchProductPage,
   ],
   imports: [
     BrowserModule,
@@ -53,6 +55,7 @@ import { FIREBASE_CONFIG } from "../config/firebase.credentials";
     MyProductsPage,
     LoginPage,
     SignupPage
+    SearchProductPage
   ],
   providers: [
     StatusBar,

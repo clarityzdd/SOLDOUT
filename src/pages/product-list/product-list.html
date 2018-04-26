@@ -24,6 +24,12 @@
     </ion-refresher-content>
   </ion-refresher>
 
+  <div text-center>
+    <button ion-button round outline (click)="navSearchProductPage()">
+        <ion-icon name="search"></ion-icon> &nbsp; Buscar
+    </button>
+  </div>
+
   <ion-card *ngFor="let product of productList$ | async">
     <ion-item>
       <ion-avatar item-start>
@@ -31,9 +37,7 @@
       </ion-avatar>
       <h2>Nombre usuario</h2>
     </ion-item>
-
-    <img src="../../assets/imgs/llavero1.jpg"/>
-
+    <img  [src]="product.image"/>
     <ion-card-content>
       <ion-card-title>
         {{product.name}}
@@ -44,9 +48,9 @@
       <br>
       <a item item-icon-left assertive>
         <ion-icon name="ios-pricetags-outline"></ion-icon>
-        {{product.price}}
+        {{product.price}}€
       </a>
     </ion-card-content>
   </ion-card>
 
-</ion-content>
+

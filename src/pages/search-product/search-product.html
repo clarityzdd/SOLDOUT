@@ -2,13 +2,7 @@
 <ion-header>
 
   <ion-navbar color="primary">
-    <ion-title>Mis productos</ion-title>
-
-    <button ion-button item-right (click)="logout()" *ngIf="auth.authenticated">
-      <ion-icon name="log-out" item-left></ion-icon>
-      Log out
-    </button>
-    
+    <ion-title>Buscador articulos</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -24,7 +18,9 @@
     </ion-refresher-content>
   </ion-refresher>
 
-  <ion-card>
+  <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+
+  <ion-card *ngFor="let product of productList">
     <ion-item>
       <ion-avatar item-start>
         <img src="../../assets/icon/favicon.ico">
@@ -32,24 +28,20 @@
       <h2>Nombre usuario</h2>
     </ion-item>
 
-    <img  [src]=""/>
+    <img  [src]="product.image"/>
 
     <ion-card-content>
       <ion-card-title>
-        Nombre producto
+        {{product.name}}
       </ion-card-title>
       <p>
-        Descripcion
+        {{product.description}}
       </p>
       <br>
       <a item item-icon-left assertive>
         <ion-icon name="ios-pricetags-outline"></ion-icon>
-        XX€
-      </a><br>
-
-      <button ion-button (click)="editProduct()">Editar</button>
-      <button ion-button (click)="deleteProduct()">Borrar</button>
-
+        {{product.price}}€
+      </a>
     </ion-card-content>
   </ion-card>
 
