@@ -2,8 +2,8 @@ import {Injectable} from "@angular/core";
 import {AngularFireDatabase} from "angularfire2/database";
 
 import {ProductItem} from "../../models/product-item/product-item.model";
-import {AngularFireAuth} from "angularfire2/auth";
 import {AuthService} from "../auth.service";
+
 
 @Injectable()
 
@@ -13,12 +13,14 @@ export class ProductListService {
   ('product-list');
   userId: string;
 
-  constructor(private db: AngularFireDatabase, private afAuth: AuthService) {
-    this.userId = this.afAuth.getUserUid();
+  constructor(private db: AngularFireDatabase, private auth: AuthService,
+              ) {
   }
 
   getProductList () {
-    this.productListRef = this.db.list(`product-list/${this.userId}`);
+    if (!this.auth.user.uid) return;
+    //console.log('UID: ' + this.auth.user.uid + '; Email: ' + this.auth.getEmail() );
+    this.productListRef = this.db.list(`product-list/${this.auth.user.uid}`);
     return this.productListRef;
   }
 

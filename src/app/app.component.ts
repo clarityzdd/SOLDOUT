@@ -25,14 +25,4 @@ export class MyApp {
       splashScreen.hide();
     });
   }
-
-  login() {
-    this.auth.signOut();
-    this.nav.setRoot(LoginPage);
-  }
-
-  logout() {
-    this.auth.signOut();
-    this.nav.setRoot(TabsPage);
-  }
 }

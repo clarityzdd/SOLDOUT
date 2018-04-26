@@ -6,9 +6,10 @@ import AuthProvider = firebase.auth.AuthProvider;
 @Injectable()
 export class AuthService {
   user: firebase.User;
+  private sub: any;
 
   constructor(public afAuth: AngularFireAuth) {
-    afAuth.authState.subscribe( user => { this.user = user; });
+    this.sub = afAuth.authState.subscribe( user => { this.user = user; });
   }
 
   signInWithEmail(credentials) {
@@ -34,5 +35,9 @@ export class AuthService {
 
   signOut(): Promise<void> {
     return this.afAuth.auth.signOut();
+  }
+
+  ngOnDestroy() {
+    this.sub.unsubscribe();
   }
 }
