@@ -9,7 +9,7 @@ export class ToastService {
 
   }
 
-  show(message: string, duration: number = 8000) {
+  show(message: string, duration: number = 3000) {
     return this.toast
       .create({
         message,

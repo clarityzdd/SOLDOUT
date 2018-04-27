@@ -30,4 +30,8 @@ export class ProductListService {
     return this.productListRef.update(product.key, product);
   }
 
+  removeProduct(product:ProductItem) {
+    return this.productListRef.remove(product.key);
+  }
+
 }
