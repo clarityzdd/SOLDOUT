@@ -11,21 +11,23 @@ export class ProductListService {
 
   private productListRef = this.db.list<ProductItem>
   ('product-list');
-  userId: string;
 
-  constructor(private db: AngularFireDatabase, private auth: AuthService,
-              ) {
+  constructor(private db: AngularFireDatabase, private auth: AuthService) {
   }
 
   getProductList () {
     if (!this.auth.user.uid) return;
-    //console.log('UID: ' + this.auth.user.uid + '; Email: ' + this.auth.getEmail() );
-    this.productListRef = this.db.list(`product-list/${this.auth.user.uid}`);
+    console.log('UID: ' + this.auth.user.uid + '; Email: ' + this.auth.getEmail() );
+    this.productListRef = this.db.list(`product-list/`);
     return this.productListRef;
   }
 
   addProduct(product: ProductItem) {
     return this.productListRef.push(product);
+  }
+
+  editProduct(product: ProductItem) {
+    return this.productListRef.update(product.key, product);
   }
 
 }
