@@ -4,7 +4,6 @@ import {AuthService} from "../../services/auth.service";
 import {LoginPage} from "../login/login";
 import firebase from "firebase";
 import {EditProductPage} from "../edit-product/edit-product";
-import {ProductItem} from "../../models/product-item/product-item.model";
 
 @IonicPage()
 @Component({
@@ -14,8 +13,6 @@ import {ProductItem} from "../../models/product-item/product-item.model";
 export class MyProductsPage {
 
   public productList:Array<any>;   //List of products we are pulling from db
-
-  public loadedProductList:Array<any>;  //"Hack" for big list
 
   public productRef:firebase.database.Reference;
 
@@ -27,12 +24,12 @@ export class MyProductsPage {
     this.productRef.on('value', productList => {
       let products = [];
       productList.forEach( name => {
-        products.reverse().push(name.val());
+        products.push(name.val());
         return false;
       });
 
-      this.productList = products;
-      this.loadedProductList = products;
+      this.productList = products.reverse();
+
     });
 
   }

@@ -8,6 +8,7 @@ import {MyProductsPage} from "../my-products/my-products";
 
 import {ProductListService} from "../../services/product-list/product-list.service";
 import {AuthService} from "../../services/auth.service";
+import * as firebase from "firebase";
 
 @Component({
   selector: 'page-add-product',
@@ -32,9 +33,12 @@ export class AddProductPage {
     product.uid = this.auth.getUserUid();
     this.list.addProduct(product).then(ref => {
       console.log(ref.key); //Get key and show it on console
+      const newKey = ref.key;
       this.navCtrl.push(MyProductsPage, {key: ref.key}); //Goes to MyProductsPage with key
       this.navCtrl.parent.select(2);
       this.navCtrl.popTo(AddProductPage);
+      const db = firebase.database();
+      db.ref(`product-list/${newKey}/key`).set(newKey);
     });
   }
 
