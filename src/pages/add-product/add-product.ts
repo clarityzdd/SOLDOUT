@@ -9,6 +9,7 @@ import {MyProductsPage} from "../my-products/my-products";
 import {ProductListService} from "../../services/product-list/product-list.service";
 import {AuthService} from "../../services/auth.service";
 import * as firebase from "firebase";
+import {ToastService} from "../../services/toast.service";
 
 @Component({
   selector: 'page-add-product',
@@ -25,9 +26,14 @@ export class AddProductPage {
     key: '',
   };
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public db: AngularFireDatabase, private list: ProductListService,
-              private auth: AuthService) {
-  }
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public db: AngularFireDatabase,
+    private list: ProductListService,
+    private auth: AuthService,
+    private toast: ToastService,
+    ) {}
 
   addProduct(product: ProductItem) {
     product.uid = this.auth.getUserUid();
@@ -40,6 +46,8 @@ export class AddProductPage {
       const db = firebase.database();
       db.ref(`product-list/${newKey}/key`).set(newKey);
     });
+    this.toast.show(`${product.name} añadido correctamente`);
+
   }
 
   takePhoto() {
