@@ -23,15 +23,5 @@ export class MyProductsPage {
     console.log('ionViewDidLoad MyProductsPage');
   }
 
-  logout() {
-    this.auth.signOut().then(
-      function() {
-        console.log('Logout');
 
-      }
-      ,function (error) {
-          console.error('error: ' + error);
-        });
-    this.navCtrl.setRoot(LoginPage);
-  }
 }
