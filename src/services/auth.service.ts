@@ -39,8 +39,6 @@ export class AuthService {
     return this.afAuth.auth.signOut();
   }
 
-
-
   ngOnDestroy() {
     this.sub.unsubscribe();
   }

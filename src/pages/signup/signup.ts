@@ -5,6 +5,7 @@ import {AuthService} from "../../services/auth.service";
 import {TabsPage} from "../tabs/tabs";
 import {Profile} from "../../models/profile.model";
 import {ProfileService} from "../../services/profile.service";
+import * as firebase from "firebase";
 
 /**
  * Generated class for the SignupPage page.
@@ -44,10 +45,12 @@ export class SignupPage {
   }
 
   createProfile(profile: Profile) {
-
     profile.email = this.form.value.email;
     profile.image = this.defaultImage;
-    this.list.addProfile(profile);
+    this.list.addProfile(profile).then(ref => {
+      const newKey = ref.key;
+      firebase.database().ref(`user-list/${newKey}/key}`).set(newKey);
+    });
     //console.log(profile);
   }
 

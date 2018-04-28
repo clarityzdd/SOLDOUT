@@ -8,7 +8,7 @@ import {Profile} from "../models/profile.model";
 
 @Injectable()
 export class ProfileService {
-  private userListRef = this.db.list<Profile>('user-list'); //Se puede cambiar a profiles.
+  userListRef = this.db.list<Profile>('user-list'); //Se puede cambiar a profiles.
 
   constructor(private afauth: AngularFireAuth, private db: AngularFireDatabase,
               private auth: AuthService,
@@ -23,5 +23,46 @@ export class ProfileService {
 
   addProfile(profile: Profile) {
     return this.userListRef.push(profile)
+  }
+
+  editProfile(profile: Profile) {
+    return this.userListRef.update(profile.key, profile);
+  }
+
+  getCurrentProfile() {
+    //const data = this.userListRef.valueChanges().subscribe(res => console.log(res));
+    const data =  this.db.list('user-list/', query => query.orderByChild('email')
+      .equalTo(this.auth.getEmail())).valueChanges().subscribe(res => {
+        var profile : Profile;
+        profile = {
+          email: res[0]['email'],
+          address: res[0]['address'],
+          name: res[0]['name'],
+          image: res[0]['image'],
+          key: res[0]['key'],
+        }
+        return profile;
+    });
+  }
+
+  getProfile(email: string
+  ) {
+    const data =  this.db.list('user-list/', query => query.orderByChild('email')
+      .equalTo(email)).valueChanges().subscribe(res => {
+      var profile : Profile;
+      profile = {
+        email: res[0]['email'],
+        address: res[0]['address'],
+        name: res[0]['name'],
+        image: res[0]['image'],
+      };
+      console.log(profile.image);
+      console.log(profile.name);
+      console.log(profile.address);
+      console.log(profile.email);
+      console.log('Dentro del servicio: ' + profile);
+      return profile; // Error aqui, Devuelve [object Object] y tiene que devolver Profile
+    });
+
   }
 }

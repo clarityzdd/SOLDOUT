@@ -10,8 +10,9 @@
     </ion-toolbar>
   </ion-header>
   <ion-content>
-    <ion-item>
+    <ion-item (click)="editProfile(getProfile(this.auth.getEmail()))">
       Perfil
+
     </ion-item>
 
     <ion-list>

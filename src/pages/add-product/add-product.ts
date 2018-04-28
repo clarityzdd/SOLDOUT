@@ -33,7 +33,6 @@ export class AddProductPage {
     private list: ProductListService,
     private auth: AuthService,
     private toast: ToastService,
-    private auth: AuthService,
     ) {}
 
   addProduct(product: ProductItem) {

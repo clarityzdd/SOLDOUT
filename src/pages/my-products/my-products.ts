@@ -34,9 +34,7 @@ export class MyProductsPage {
         products.push(name.val());
         return false;
       });
-
       this.productList = products.reverse();
-
     });
 
   }
