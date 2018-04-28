@@ -9,6 +9,7 @@ import {Observable} from "rxjs/Observable";
 import {AuthService} from "../../services/auth.service";
 
 import firebase from 'firebase';
+import {ChatPage} from "../chat/chat";
 
 @Component({
   selector: 'page-product-list',
@@ -64,22 +65,8 @@ export class ProductListPage {
     this.searchProductList = this.loadedProductList;
   }
 
-  getItems(searchbar) {
-    this.initializaItems();
-
-    const value = searchbar.srcElement.value;
-
-    if (!value) return;
-
-    this.searchProductList = this.searchProductList.filter((v) => {
-      if(v.name && value) {
-        if (v.name.toLowerCase().indexOf(value.toLowerCase()) > -1) {
-          console.log("FUNCIONA");
-          return true;
-        }
-        return false;
-      }
-    });
+  chat(product) {
+    this.navCtrl.push(ChatPage, product);
   }
 
   doRefresh(refresher) {

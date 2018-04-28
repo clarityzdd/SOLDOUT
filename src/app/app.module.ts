@@ -4,26 +4,29 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { NgxErrorsModule } from '@ultimate/ngxerrors';
 
-import {ProductListPage} from "../pages/product-list/product-list";
-import {AddProductPage} from "../pages/add-product/add-product";
+import { ProductListPage } from "../pages/product-list/product-list";
+import { AddProductPage } from "../pages/add-product/add-product";
 import { TabsPage } from '../pages/tabs/tabs';
 import { LoginPage } from '../pages/login/login';
-import {MyProductsPage} from "../pages/my-products/my-products";
+import { MyProductsPage } from "../pages/my-products/my-products";
 import { SignupPage} from "../pages/signup/signup";
+import { SearchProductPage} from "../pages/search-product/search-product";
+import { EditProductPage } from "../pages/edit-product/edit-product";
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { AngularFireDatabaseModule } from "angularfire2/database";
-import {AngularFireAuth, AngularFireAuthModule} from "angularfire2/auth"
+import { AngularFireAuth, AngularFireAuthModule } from "angularfire2/auth"
 import { AngularFireModule } from "angularfire2";
 
 
 import {ProductListService} from "../services/product-list/product-list.service";
 import { AuthService} from "../services/auth.service";
 import { FIREBASE_CONFIG } from "../config/firebase.credentials";
-import {SearchProductPage} from "../pages/search-product/search-product";
-import {EditProductPage} from "../pages/edit-product/edit-product";
+
+import {ToastService} from "../services/toast.service";
+import {ChatPage} from "../pages/chat/chat";
 
 
 
@@ -38,6 +41,7 @@ import {EditProductPage} from "../pages/edit-product/edit-product";
     SignupPage,
     SearchProductPage,
     EditProductPage,
+    ChatPage,
   ],
   imports: [
     BrowserModule,
@@ -59,6 +63,7 @@ import {EditProductPage} from "../pages/edit-product/edit-product";
     SignupPage,
     SearchProductPage,
     EditProductPage,
+    ChatPage,
   ],
   providers: [
     StatusBar,
@@ -66,7 +71,8 @@ import {EditProductPage} from "../pages/edit-product/edit-product";
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ProductListService,
     AuthService,
-    AngularFireAuth
+    AngularFireAuth,
+    ToastService,
   ]
 })
 export class AppModule {}
