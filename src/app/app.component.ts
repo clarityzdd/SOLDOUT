@@ -32,12 +32,15 @@ export class MyApp {
 
   getProfile(email: string) {
     var profile = this.pService.getProfile(email);
-    console.log('Dentro de app.component: ' + profile);
+    console.log('Dentro de app.component: ', profile);
+    // Error aqui, el profile que se genera es undefined.
     return profile;
   }
 
   editProfile(profile: Profile) {
-    return this.pService.editProfile(profile);
+    console.log('Dentro de editProfile (app.components): ', profile);
+    var pfile =this.pService.editProfile(profile);
+    return pfile;
   }
 
   logout() {
@@ -46,7 +49,7 @@ export class MyApp {
         console.log('Logout');
       }
       ,function (error) {
-        console.error('error: ' + error);
+        console.error('error: ',  error);
       });
     this.nav.setRoot(LoginPage);
   }

@@ -47,7 +47,7 @@ export class ProfileService {
 
   getProfile(email: string
   ) {
-    const data =  this.db.list('user-list/', query => query.orderByChild('email')
+    this.db.list('user-list/', query => query.orderByChild('email')
       .equalTo(email)).valueChanges().subscribe(res => {
       var profile : Profile;
       profile = {
@@ -60,8 +60,8 @@ export class ProfileService {
       console.log(profile.name);
       console.log(profile.address);
       console.log(profile.email);
-      console.log('Dentro del servicio: ' + profile);
-      return profile; // Error aqui, Devuelve [object Object] y tiene que devolver Profile
+      console.log('Dentro del servicio: ',  profile);
+      return profile;
     });
 
   }
