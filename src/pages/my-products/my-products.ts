@@ -7,6 +7,7 @@ import {EditProductPage} from "../edit-product/edit-product";
 import {ProductItem} from "../../models/product-item/product-item.model";
 import {ProductListService} from "../../services/product-list/product-list.service";
 import {ToastService} from "../../services/toast.service";
+import {ChatPage} from "../chat/chat";
 
 @IonicPage()
 @Component({
@@ -51,6 +52,10 @@ export class MyProductsPage {
     });
   }
 
+  chat(product) {
+    this.navCtrl.push(ChatPage, product);
+  }
+
   doRefresh(refresher) {
     setTimeout(() => {
       refresher.complete();
@@ -66,6 +71,8 @@ export class MyProductsPage {
       ,function (error) {
           console.error('error: ' + error);
         });
+    this.navCtrl.popToRoot();
     this.navCtrl.setRoot(LoginPage);
+    window.location.reload();
   }
 }
