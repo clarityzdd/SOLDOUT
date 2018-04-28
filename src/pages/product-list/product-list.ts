@@ -30,8 +30,7 @@ export class ProductListPage {
       .map(
         changes => {
           return changes.map(c => ({    //Return new object for every change
-            key: c.payload.key,
-            ...c.payload.val()
+            key: c.payload.key, ...c.payload.val()
           })).reverse()
         }
       );

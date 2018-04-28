@@ -23,6 +23,8 @@ import { AuthService} from "../services/auth.service";
 import { FIREBASE_CONFIG } from "../config/firebase.credentials";
 import {SearchProductPage} from "../pages/search-product/search-product";
 import {ProfileService} from "../services/profile.service";
+import {EditProductPage} from "../pages/edit-product/edit-product";
+import {ToastService} from "../services/toast.service";
 
 
 
@@ -36,6 +38,7 @@ import {ProfileService} from "../services/profile.service";
     LoginPage,
     SignupPage,
     SearchProductPage,
+    EditProductPage,
 
   ],
   imports: [
@@ -57,6 +60,7 @@ import {ProfileService} from "../services/profile.service";
     LoginPage,
     SignupPage,
     SearchProductPage,
+    EditProductPage,
   ],
   providers: [
     StatusBar,
@@ -66,6 +70,7 @@ import {ProfileService} from "../services/profile.service";
     AuthService,
     AngularFireAuth,
     ProfileService,
+    ToastService,
   ]
 })
 export class AppModule {}

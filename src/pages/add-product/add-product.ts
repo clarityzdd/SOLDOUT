@@ -8,6 +8,8 @@ import {MyProductsPage} from "../my-products/my-products";
 
 import {ProductListService} from "../../services/product-list/product-list.service";
 import {AuthService} from "../../services/auth.service";
+import * as firebase from "firebase";
+import {ToastService} from "../../services/toast.service";
 
 @Component({
   selector: 'page-add-product',
@@ -21,21 +23,33 @@ export class AddProductPage {
     price: undefined,
     image: '',
     uid: '',
+    key: '',
   };
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public db: AngularFireDatabase,
-              private list: ProductListService, private auth: AuthService) {
-  }
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public db: AngularFireDatabase,
+    private list: ProductListService,
+    private auth: AuthService,
+    private toast: ToastService,
+    private auth: AuthService,
+    ) {}
 
   addProduct(product: ProductItem) {
     product.uid = this.auth.getUserUid();
     //console.log(this.product.uid);
     this.list.addProduct(product).then(ref => {
       console.log(ref.key); //Get key and show it on console
-      this.navCtrl.push(MyProductsPage, {key: ref.key});  //Goes to MyProductsPage with key
+      const newKey = ref.key;
+      this.navCtrl.push(MyProductsPage, {key: ref.key}); //Goes to MyProductsPage with key
       this.navCtrl.parent.select(2);
-      this.navCtrl.popToRoot();
+      this.navCtrl.popTo(AddProductPage);
+      const db = firebase.database();
+      db.ref(`product-list/${newKey}/key`).set(newKey);
     });
+    this.toast.show(`${product.name} añadido correctamente`);
+
   }
 
   takePhoto() {

@@ -12,8 +12,7 @@ export class ProductListService {
   private productListRef = this.db.list<ProductItem>
   ('product-list');
 
-  constructor(private db: AngularFireDatabase, private auth: AuthService,
-              ) {
+  constructor(private db: AngularFireDatabase, private auth: AuthService) {
   }
 
   getProductList () {
@@ -25,6 +24,14 @@ export class ProductListService {
 
   addProduct(product: ProductItem) {
     return this.productListRef.push(product);
+  }
+
+  editProduct(product: ProductItem) {
+    return this.productListRef.update(product.key, product);
+  }
+
+  removeProduct(product:ProductItem) {
+    return this.productListRef.remove(product.key);
   }
 
 }
