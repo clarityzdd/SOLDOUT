@@ -27,6 +27,8 @@ import { FIREBASE_CONFIG } from "../config/firebase.credentials";
 
 import {ToastService} from "../services/toast.service";
 import {ChatPage} from "../pages/chat/chat";
+import {CreateProfilePage} from "../pages/create-profile/create-profile";
+import {ProfilePage} from "../pages/profile/profile";
 
 
 
@@ -42,6 +44,8 @@ import {ChatPage} from "../pages/chat/chat";
     SearchProductPage,
     EditProductPage,
     ChatPage,
+    CreateProfilePage,
+    ProfilePage,
   ],
   imports: [
     BrowserModule,
@@ -64,6 +68,8 @@ import {ChatPage} from "../pages/chat/chat";
     SearchProductPage,
     EditProductPage,
     ChatPage,
+    CreateProfilePage,
+    ProfilePage,
   ],
   providers: [
     StatusBar,
