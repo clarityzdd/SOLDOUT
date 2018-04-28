@@ -23,13 +23,13 @@ export class AddProductPage {
     uid: '',
   };
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public db: AngularFireDatabase, private list: ProductListService,
-              private auth: AuthService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public db: AngularFireDatabase,
+              private list: ProductListService, private auth: AuthService) {
   }
 
   addProduct(product: ProductItem) {
     product.uid = this.auth.getUserUid();
-    console.log(this.product.uid);
+    //console.log(this.product.uid);
     this.list.addProduct(product).then(ref => {
       console.log(ref.key); //Get key and show it on console
       this.navCtrl.push(MyProductsPage, {key: ref.key});  //Goes to MyProductsPage with key

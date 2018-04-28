@@ -22,6 +22,7 @@ import {ProductListService} from "../services/product-list/product-list.service"
 import { AuthService} from "../services/auth.service";
 import { FIREBASE_CONFIG } from "../config/firebase.credentials";
 import {SearchProductPage} from "../pages/search-product/search-product";
+import {ProfileService} from "../services/profile.service";
 
 
 
@@ -63,7 +64,8 @@ import {SearchProductPage} from "../pages/search-product/search-product";
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ProductListService,
     AuthService,
-    AngularFireAuth
+    AngularFireAuth,
+    ProfileService,
   ]
 })
 export class AppModule {}

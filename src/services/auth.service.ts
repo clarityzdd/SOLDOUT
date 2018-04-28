@@ -1,14 +1,16 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from "angularfire2/auth";
 import * as firebase from 'firebase/app';
-import AuthProvider = firebase.auth.AuthProvider;
+import {AngularFireDatabase} from "angularfire2/database";
+
 
 @Injectable()
 export class AuthService {
   user: firebase.User;
   private sub: any;
 
-  constructor(public afAuth: AngularFireAuth) {
+
+  constructor(private afAuth: AngularFireAuth, private db: AngularFireDatabase) {
     this.sub = afAuth.authState.subscribe( user => { this.user = user; });
   }
 

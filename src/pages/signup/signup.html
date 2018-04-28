@@ -13,7 +13,7 @@
 
 <ion-content>
 
-  <form (ngSubmit)="signup()" [formGroup]="form">
+  <form (ngSubmit)="signup();createProfile(profile)" [formGroup]="form">
     <ion-list inset>
 
       <ion-item [ngClass]="{ invalid: emailErrors.hasError('*', ['touched']) }">
@@ -31,11 +31,33 @@
       <div ngxErrors="password" #passwordErrors="ngxErrors">
         <div [ngxError]="['minlength', 'required']" [when]="['touched']">It should be at least 6 characters</div>
       </div>
+
+      <ion-item>
+        <ion-input type="text" [(ngModel)]="profile.name" [ngModelOptions]="{standalone:true}" name="name" placeholder="Name"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input type="text" [(ngModel)]="profile.address" [ngModelOptions]="{standalone:true}" name="address" placeholder="Address"></ion-input>
+      </ion-item>
+
+      <!--
+      <ion-item>
+        <ion-label stacked>Imagen</ion-label>
+      </ion-item><br>
+
+      <button ion-button icon-only block large>
+        <ion-icon name="ios-camera"></ion-icon>
+      </button>
+      <br>
+      <button ion-button icon-only block large>
+        <ion-icon name="ios-images"></ion-icon>
+      </button>
+      <br>
+      -->
     </ion-list>
 
     <div padding-horizontal>
       <div class="form-error">{{signupError}}</div>
-
       <button ion-button full type="submit" [disabled]="!form.valid">Sign up</button>
     </div>
   </form>

@@ -11,7 +11,6 @@ export class ProductListService {
 
   private productListRef = this.db.list<ProductItem>
   ('product-list');
-  userId: string;
 
   constructor(private db: AngularFireDatabase, private auth: AuthService,
               ) {
@@ -20,7 +19,7 @@ export class ProductListService {
   getProductList () {
     if (!this.auth.user.uid) return;
     console.log('UID: ' + this.auth.user.uid + '; Email: ' + this.auth.getEmail() );
-    this.productListRef = this.db.list(`product-list/`);
+    this.productListRef = this.db.list('product-list/');
     return this.productListRef;
   }
 
