@@ -24,6 +24,7 @@ import { AuthService} from "../services/auth.service";
 import { FIREBASE_CONFIG } from "../config/firebase.credentials";
 import {SearchProductPage} from "../pages/search-product/search-product";
 import {EditProductPage} from "../pages/edit-product/edit-product";
+import {ToastService} from "../services/toast.service";
 
 
 
@@ -66,7 +67,8 @@ import {EditProductPage} from "../pages/edit-product/edit-product";
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ProductListService,
     AuthService,
-    AngularFireAuth
+    AngularFireAuth,
+    ToastService,
   ]
 })
 export class AppModule {}

@@ -4,6 +4,9 @@ import {AuthService} from "../../services/auth.service";
 import {LoginPage} from "../login/login";
 import firebase from "firebase";
 import {EditProductPage} from "../edit-product/edit-product";
+import {ProductItem} from "../../models/product-item/product-item.model";
+import {ProductListService} from "../../services/product-list/product-list.service";
+import {ToastService} from "../../services/toast.service";
 
 @IonicPage()
 @Component({
@@ -16,8 +19,12 @@ export class MyProductsPage {
 
   public productRef:firebase.database.Reference;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,
-              private auth: AuthService) {
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              private auth: AuthService,
+              private list: ProductListService,
+              private toast: ToastService,
+  ) {
 
     this.productRef = firebase.database().ref('/product-list');
 
@@ -36,6 +43,12 @@ export class MyProductsPage {
 
   editProduct(product) {
     this.navCtrl.push(EditProductPage, product);
+  }
+
+  removeProduct(product: ProductItem) {
+    this.list.removeProduct(product).then(() => {
+      this.toast.show(`${product.name} ha sido eliminado`);
+    });
   }
 
   doRefresh(refresher) {
