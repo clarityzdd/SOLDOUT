@@ -62,11 +62,14 @@ export class MyProductsPage {
     }, 2000);
   }
 
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad MyProductsPage');
+  }
+
   logout() {
     this.auth.signOut().then(
       function() {
         console.log('Logout');
-
       }
       ,function (error) {
           console.error('error: ' + error);

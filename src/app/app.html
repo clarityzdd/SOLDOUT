@@ -1,1 +1,23 @@
-<ion-nav [root]="rootPage"></ion-nav>
+<ion-menu id="sideMenu" [content]="content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>
+        <ion-avatar item-start>
+          <img src="../assets/imgs/identicon.png" alt="User Profile Image">
+        </ion-avatar>
+        {{this.auth.getEmail()}}
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-item>
+      Perfil
+    </ion-item>
+
+    <ion-list>
+      <ion-item (click)="this.logout()" *ngIf="auth.authenticated">Log Out</ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-nav [root]="rootPage" #content></ion-nav>

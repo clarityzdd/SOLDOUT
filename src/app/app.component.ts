@@ -25,4 +25,15 @@ export class MyApp {
       splashScreen.hide();
     });
   }
+
+  logout() {
+    this.auth.signOut().then(
+      function() {
+        console.log('Logout');
+      }
+      ,function (error) {
+        console.error('error: ' + error);
+      });
+    this.nav.setRoot(LoginPage);
+  }
 }

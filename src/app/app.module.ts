@@ -20,7 +20,6 @@ import { AngularFireDatabaseModule } from "angularfire2/database";
 import { AngularFireAuth, AngularFireAuthModule } from "angularfire2/auth"
 import { AngularFireModule } from "angularfire2";
 
-
 import {ProductListService} from "../services/product-list/product-list.service";
 import { AuthService} from "../services/auth.service";
 import { FIREBASE_CONFIG } from "../config/firebase.credentials";

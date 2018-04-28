@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController } from 'ionic-angular';
+import {IonicPage, MenuController, NavController} from 'ionic-angular';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {TabsPage} from "../tabs/tabs";
 import {AuthService} from "../../services/auth.service";
@@ -24,11 +24,13 @@ export class LoginPage {
    loginError: string;
 
   constructor(private navCtrl: NavController, private auth: AuthService,
-              fb: FormBuilder) {
+              fb: FormBuilder, public menuCtrl: MenuController) {
     this.loginForm = fb.group({
       email: ['',Validators.compose([Validators.required, Validators.email])],
       password: ['', Validators.compose([Validators.required])]
     });
+    this.menuCtrl.enable(false,'sideMenu');
+
   }
 
   ionViewDidLoad() {
