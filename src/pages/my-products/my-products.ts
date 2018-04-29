@@ -76,16 +76,4 @@ export class MyProductsPage {
     console.log('ionViewDidLoad MyProductsPage');
   }
 
-  logout() {
-    this.auth.signOut().then(
-      function() {
-        console.log('Logout');
-      }
-      ,function (error) {
-          console.error('error: ' + error);
-        });
-    this.navCtrl.popToRoot();
-    this.navCtrl.setRoot(LoginPage);
-    window.location.reload();
-  }
 }

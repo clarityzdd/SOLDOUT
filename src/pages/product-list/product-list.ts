@@ -22,9 +22,6 @@ export class ProductListPage {
   productList$: Observable<ProductItem []>;
   userList$: Observable<Profile []>;
 
-  public searchProductList:Array<any>;   //List of products we are pulling from db
-  public loadedProductList:Array<any>;  //"Hack" for big list
-  public productRef:firebase.database.Reference;
   constructor(public navCtrl: NavController, public navParams: NavParams, private list: ProductListService,
               private auth: AuthService, private pService: ProfileService) {
 
@@ -50,19 +47,6 @@ export class ProductListPage {
         }
       );
 
-    this.productRef = firebase.database().ref('/product-list');
-
-    this.productRef.on('value', searchProductList => {
-      let products = [];
-      searchProductList.forEach( name => {
-        products.push(name.val());
-        return false;
-      });
-
-      this.searchProductList = products;
-      this.loadedProductList = products;
-    });
-
   }
 
 
@@ -74,10 +58,6 @@ export class ProductListPage {
 
   navSearchProductPage() {
     this.navCtrl.push(SearchProductPage);
-  }
-
-  initializaItems(): void {
-    this.searchProductList = this.loadedProductList;
   }
 
   chat(product) {

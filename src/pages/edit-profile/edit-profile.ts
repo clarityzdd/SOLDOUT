@@ -7,12 +7,6 @@ import {ProfilePage} from "../profile/profile";
 import {Observable} from "rxjs/Observable";
 import {SideMenuPage} from "../side-menu/side-menu";
 
-/**
- * Generated class for the EditProfilePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 @IonicPage()
 @Component({
   selector: 'page-edit-profile',
@@ -23,11 +17,11 @@ export class EditProfilePage {
   profile = {} as Profile;
   profileDataObservable: Observable<Profile>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,
-              private afAuth: AngularFireAuth, private db: AngularFireDatabase,
-              ) {
-
-  }
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              private afAuth: AngularFireAuth,
+              private db: AngularFireDatabase,
+              ) {}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad EditProfilePage');

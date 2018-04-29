@@ -10,7 +10,7 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Log in</ion-title>
+    <ion-title>Inicio Sesion</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -38,12 +38,9 @@
     <div padding-horizontal>
       <div class="form-error">{{loginError}}</div>
 
-      <button ion-button full type="submit" [disabled]="!loginForm.valid">Entrar</button>
-      <div class="login-footer">
-        <p>
-          <a href="#">¿Olvidaste la contraseña?</a>
-        </p>
-      </div>
+      <button ion-button icon-left block clear type="submit" [disabled]="!loginForm.valid">
+        <ion-icon name="person"></ion-icon>Entrar
+      </button>
 
       <ion-list>
         <button ion-button icon-left block clear (click)="signup()">

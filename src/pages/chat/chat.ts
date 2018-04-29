@@ -4,8 +4,6 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import {ProductItem} from "../../models/product-item/product-item.model";
 import {AuthService} from "../../services/auth.service";
 
-
-
 @Component({
   selector: 'page-chat',
   templateUrl: 'chat.html',
@@ -27,8 +25,8 @@ export class ChatPage {
   ) {
     this.product = this.navParams.get('product');
     this.productKey = this.product.key;
+    this.user = this.auth.getEmail();
 
-    this.user = this.auth.getUserUid();
     this._chatSubscription = this.db.list(`/chat/${this.productKey}`).valueChanges().subscribe( data => {
       this.messages = data;
     });

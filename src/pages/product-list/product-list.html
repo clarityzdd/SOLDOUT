@@ -42,15 +42,18 @@
     <ion-item>
       <div *ngFor="let profile of userList$ | async">
         <div *ngIf="product.uid === profile.uid">
-          <ion-avatar item-start>
-            <img src="{{profile.image}}">
-          </ion-avatar>
-          <h2>{{profile.name}}</h2>
+          <ion-row>
+            <ion-avatar item-start>
+              <img src="{{profile.image}}">
+            </ion-avatar>
+            <h2 padding-top="15px">{{profile.name}}</h2>
+          </ion-row>
         </div>
       </div>
-
     </ion-item>
+
     <img  [src]="product.image"/>
+
     <ion-card-content>
       <ion-card-title>
         {{product.name}}
@@ -59,11 +62,11 @@
         {{product.description}}
       </p>
       <br>
-      <a item item-icon-left assertive>
+      <a item item-icon-left assertive style="font-size: medium">
         <ion-icon name="ios-pricetags-outline"></ion-icon>
         {{product.price}}€
       </a>
-      <button ion-button round block clear color="primary" (click)="chat({product: product})">Chat</button>
+      <button ion-button round block clear color="secondary" (click)="chat({product: product})">Chat</button>
     </ion-card-content>
   </ion-card>
 

@@ -1,18 +1,9 @@
 import { Component } from '@angular/core';
 import {IonicPage, MenuController, NavController} from 'ionic-angular';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {TabsPage} from "../tabs/tabs";
 import {AuthService} from "../../services/auth.service";
 import { SignupPage } from "../signup/signup";
 import {SideMenuPage} from "../side-menu/side-menu";
-
-
-/**
- * Generated class for the LoginPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({

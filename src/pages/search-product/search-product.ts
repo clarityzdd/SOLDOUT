@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import firebase from 'firebase';
+import {ChatPage} from "../chat/chat";
+import {Profile} from "../../models/profile.model";
+import {Observable} from "rxjs/Observable";
+import {ProfileService} from "../../services/profile.service";
 
 @Component({
   selector: 'page-search-product',
@@ -9,12 +13,13 @@ import firebase from 'firebase';
 export class SearchProductPage {
 
   public productList:Array<any>;   //List of products we are pulling from db
-
   public loadedProductList:Array<any>;  //"Hack" for big list
-
   public productRef:firebase.database.Reference;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  userList$: Observable<Profile []>;
+
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private pService: ProfileService,) {
 
     this.productRef = firebase.database().ref('/product-list');
 
@@ -26,8 +31,19 @@ export class SearchProductPage {
       });
 
       this.productList = products;
-      this.loadedProductList = products;
+      this.loadedProductList = products.reverse();
     });
+
+    this.userList$ = this.pService
+      .getProfiles()
+      .snapshotChanges()
+      .map(
+        changes => {
+          return changes.map(c => ({
+            key: c.payload.key, ...c.payload.val()
+          })).reverse()
+        }
+      );
 
   }
 
@@ -45,7 +61,6 @@ export class SearchProductPage {
     this.productList = this.productList.filter((v) => {
       if(v.name && value) {
         if (v.name.toLowerCase().indexOf(value.toLowerCase()) > -1) {
-          console.log("FUNCIONA");
           return true;
         }
         return false;
@@ -53,5 +68,14 @@ export class SearchProductPage {
     });
   }
 
+  chat(product) {
+    this.navCtrl.push(ChatPage, product);
+  }
+
+  doRefresh(refresher) {
+    setTimeout(() => {
+      refresher.complete();
+    }, 2000);
+  }
 
 }
