@@ -16,6 +16,7 @@ import {ChatPage} from "../pages/chat/chat";
 import {CreateProfilePage} from "../pages/create-profile/create-profile";
 import {ProfilePage} from "../pages/profile/profile";
 import {EditProfilePage} from "../pages/edit-profile/edit-profile";
+import {SideMenuPage} from "../pages/side-menu/side-menu";
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -29,6 +30,7 @@ import { AuthService} from "../services/auth.service";
 import {ToastService} from "../services/toast.service";
 import { FIREBASE_CONFIG } from "../config/firebase.credentials";
 import {ProfileService} from "../services/profile.service";
+
 
 
 
@@ -47,6 +49,8 @@ import {ProfileService} from "../services/profile.service";
     CreateProfilePage,
     ProfilePage,
     EditProfilePage,
+    SideMenuPage,
+
   ],
   imports: [
     BrowserModule,
@@ -72,6 +76,7 @@ import {ProfileService} from "../services/profile.service";
     CreateProfilePage,
     ProfilePage,
     EditProfilePage,
+    SideMenuPage,
   ],
   providers: [
     StatusBar,

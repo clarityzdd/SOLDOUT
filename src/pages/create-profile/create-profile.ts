@@ -5,6 +5,8 @@ import {AngularFireAuth} from "angularfire2/auth";
 import {AngularFireDatabase} from "angularfire2/database";
 import {Profile} from "../../models/profile.model";
 import {ProfileService} from "../../services/profile.service";
+import {SideMenuPageModule} from "../side-menu/side-menu.module";
+import {SideMenuPage} from "../side-menu/side-menu";
 
 /**
  * Generated class for the CreateProfilePage page.
@@ -37,7 +39,7 @@ export class CreateProfilePage {
   createProfile() {
     this.afAuth.authState.take(1).subscribe(auth => {
       this.db.object(`user-list/${auth.uid}`).set(this.profile).
-      then(() => this.navCtrl.setRoot(TabsPage));
+      then(() => this.navCtrl.setRoot(SideMenuPage));
     });
   }
 }

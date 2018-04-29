@@ -9,13 +9,14 @@ import {Observable} from "rxjs/Observable";
 
 export class ProfileService {
 
-  currentUserProfile: AngularFireObject<Profile>;
+  currentUserProfile;
   profileList: AngularFireList<Profile>;
   currentUserProfileImage;
   constructor(private db: AngularFireDatabase, private auth: AuthService) {
     this.profileList = db.list(`user-list/`);
-    this.currentUserProfile = db.object(`user-list/${this.auth.afAuth.auth.currentUser.uid}`);
+    this.currentUserProfile = db.object(`user-list/${this.auth.afAuth.auth.currentUser.uid}`).valueChanges();
   }
+
 
   getProfiles() {
     return this.profileList;
@@ -29,17 +30,15 @@ export class ProfileService {
     return this.currentUserProfile;
   }
 
-  getCurrentProfileImage() {
-
-    this.currentUserProfile.valueChanges().subscribe(data => {
-      this.currentUserProfileImage = data.image;
-    });
-    console.log(this.currentUserProfileImage);
-    return this.currentUserProfileImage;
+  getUserProfile(uid: string) {
+    return this.db.object(`user-list/${uid}`).valueChanges();
   }
 
-  getProfileName() {
-
+  getCurrentProfileImage() {
+    this.currentUserProfile.subscribe(data => {
+      this.currentUserProfileImage = data.image;
+    });
+    return this.currentUserProfileImage;
   }
 
 }

@@ -16,6 +16,5 @@ export class TabsPage {
 
 
   constructor(public menuCtrl: MenuController) {
-    this.menuCtrl.enable(true,'sideMenu');
   }
 }

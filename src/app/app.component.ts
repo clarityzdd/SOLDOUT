@@ -8,6 +8,7 @@ import {ProfilePage} from "../pages/profile/profile";
 
 import { AuthService} from "../services/auth.service";
 import {ProfileService} from "../services/profile.service";
+import {SideMenuPage} from "../pages/side-menu/side-menu";
 
 
 @Component({
@@ -15,10 +16,9 @@ import {ProfileService} from "../services/profile.service";
 })
 export class MyApp {
   rootPage:any = LoginPage;
-  @ViewChild(Nav) nav: Nav;
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,
-              private auth: AuthService, private pService: ProfileService) {
+
+  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
@@ -27,30 +27,4 @@ export class MyApp {
     });
   }
 
-  profile() {
-    this.nav.setRoot(ProfilePage);
-  }
-
-  getUserId() {
-    return this.auth.getUserUid();
-  }
-
-  getCurrentUserProfileImage() {
-    return this.pService.getCurrentProfileImage();
-  }
-  /*
-  getUserName() {
-    return this.pService.getProfileName();
-  }
-  */
-  logout() {
-    this.auth.signOut().then(
-      function() {
-        console.log('Logout');
-      }
-      ,function (error) {
-        console.error('error: ' + error);
-      });
-    this.nav.setRoot(LoginPage);
-  }
 }

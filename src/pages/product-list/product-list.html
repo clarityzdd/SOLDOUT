@@ -2,12 +2,21 @@
 <ion-header>
 
   <ion-navbar color="primary">
+
+
+
     <ion-title>Articulos en venta</ion-title>
-    <ion-buttons end>
+    <ion-buttons left>
+      <button ion-button icon-only menuToggle >
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-buttons right>
       <button ion-button icon-only (click)="navToAddProductPage()">
         <ion-icon name="add"></ion-icon>
       </button>
     </ion-buttons>
+
   </ion-navbar>
 
 </ion-header>
@@ -32,7 +41,7 @@
   <ion-card *ngFor="let product of productList$ | async">
     <ion-item>
       <ion-avatar item-start>
-        <img src="../../assets/icon/favicon.ico">
+        <img src="{{}}">
       </ion-avatar>
       <h2>Nombre usuario</h2>
     </ion-item>

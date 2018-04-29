@@ -37,16 +37,16 @@
     <ion-card>
       <ion-item>
         <ion-avatar item-start>
-          <img src="../../assets/imgs/identicon.png">
+          <img src="{{getCurrentUserProfileImage()}}">
         </ion-avatar>
       </ion-item>
       <ion-card-content>
         <ion-card-title>Nombre</ion-card-title>
-        <p>{{(profileDataObservable | async)?.name}}</p>
+        <p>{{( profileDataObservable | async)?.name}}</p>
         <ion-card-title>Correo Electronico</ion-card-title>
-        <p>{{(profileDataObservable | async)?.email}}</p>
+        <p>{{( profileDataObservable | async)?.email}}</p>
         <ion-card-title>Direccion</ion-card-title>
-        <p>{{(profileDataObservable | async)?.address}}</p>
+        <p>{{( profileDataObservable | async)?.address}}</p>
       </ion-card-content>
     </ion-card>
     <ion-item>

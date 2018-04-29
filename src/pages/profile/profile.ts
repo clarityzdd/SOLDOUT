@@ -6,6 +6,7 @@ import {AngularFireDatabase} from "angularfire2/database";
 import {TabsPage} from "../tabs/tabs";
 import {Observable} from "rxjs/Observable";
 import {EditProfilePage} from "../edit-profile/edit-profile";
+import {ProfileService} from "../../services/profile.service";
 
 /**
  * Generated class for the ProfilePage page.
@@ -25,7 +26,7 @@ export class ProfilePage {
   profile = {} as Profile;
 
   constructor(private afAuth: AngularFireAuth, private db: AngularFireDatabase,
-    public navCtrl: NavController, public navParams: NavParams) {
+    public navCtrl: NavController, public navParams: NavParams, private pService: ProfileService) {
   }
 
   ionViewDidLoad() {
@@ -47,6 +48,14 @@ export class ProfilePage {
       error => console.error(error));
     console.log(test);
     return test;
+  }
+
+  getCurrentUserProfile() {
+    return this.pService.getCurrentUserProfile();
+  }
+
+  getCurrentUserProfileImage() {
+    return this.pService.getCurrentProfileImage();
   }
 
 }
