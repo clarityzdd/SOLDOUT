@@ -40,10 +40,15 @@
 
   <ion-card *ngFor="let product of productList$ | async">
     <ion-item>
-      <ion-avatar item-start>
-        <img src="{{}}">
-      </ion-avatar>
-      <h2>Nombre usuario</h2>
+      <div *ngFor="let profile of userList$ | async">
+        <div *ngIf="product.uid === profile.uid">
+          <ion-avatar item-start>
+            <img src="{{profile.image}}">
+          </ion-avatar>
+          <h2>{{profile.name}}</h2>
+        </div>
+      </div>
+
     </ion-item>
     <img  [src]="product.image"/>
     <ion-card-content>

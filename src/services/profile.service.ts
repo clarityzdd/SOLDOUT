@@ -12,6 +12,7 @@ export class ProfileService {
   currentUserProfile;
   profileList: AngularFireList<Profile>;
   currentUserProfileImage;
+  userProfile;
   constructor(private db: AngularFireDatabase, private auth: AuthService) {
     this.profileList = db.list(`user-list/`);
     this.currentUserProfile = db.object(`user-list/${this.auth.afAuth.auth.currentUser.uid}`).valueChanges();
@@ -23,7 +24,7 @@ export class ProfileService {
   }
 
   getProfile(uid: string) {
-    return this.db.object(`user-list/${uid}`);
+    return this.db.object(`user-list/${uid}`).valueChanges();
   }
 
   getCurrentUserProfile() {
@@ -31,7 +32,13 @@ export class ProfileService {
   }
 
   getUserProfile(uid: string) {
-    return this.db.object(`user-list/${uid}`).valueChanges();
+    this.db.object(`user-list/${uid}`).valueChanges().subscribe(data => {
+        console.log("DATA: ");
+        console.log(data);
+        this.userProfile = data;
+      }
+    );
+    return this.userProfile;
   }
 
   getCurrentProfileImage() {
