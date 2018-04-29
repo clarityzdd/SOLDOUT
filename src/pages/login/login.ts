@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController } from 'ionic-angular';
+import {IonicPage, MenuController, NavController} from 'ionic-angular';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {TabsPage} from "../tabs/tabs";
 import {AuthService} from "../../services/auth.service";
 import { SignupPage } from "../signup/signup";
+import {SideMenuPage} from "../side-menu/side-menu";
 
 
 /**
@@ -24,11 +25,12 @@ export class LoginPage {
    loginError: string;
 
   constructor(private navCtrl: NavController, private auth: AuthService,
-              fb: FormBuilder) {
+              fb: FormBuilder, public menu: MenuController) {
     this.loginForm = fb.group({
       email: ['',Validators.compose([Validators.required, Validators.email])],
       password: ['', Validators.compose([Validators.required])]
     });
+    this.menu.enable(false, 'sideMenu');
   }
 
   ionViewDidLoad() {
@@ -46,7 +48,7 @@ export class LoginPage {
     }
 
     this.auth.signInWithEmail(credentials).then(
-      () => this.navCtrl.setRoot(TabsPage),
+      () => this.navCtrl.setRoot(SideMenuPage),
       error => this.loginError = error.message
     )
   }

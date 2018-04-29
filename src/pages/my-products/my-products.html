@@ -1,13 +1,14 @@
 <ion-header>
   <ion-navbar color="primary">
+
     <ion-title>Mis productos</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
 
-    <button ion-button item-right (click)="logout()" *ngIf="auth.authenticated">
-      <ion-icon name="log-out" item-left></ion-icon>
-      Log out
-    </button>
   </ion-navbar>
-
 </ion-header>
 
 
@@ -24,10 +25,20 @@
   <ion-card *ngFor="let product of productList">
     <div *ngIf="product.uid === this.auth.getUserUid()">
       <ion-item>
+        <div *ngFor="let profile of userList$ | async">
+          <div *ngIf="product.uid === profile.uid">
+            <ion-avatar item-start>
+              <img src="{{profile.image}}">
+            </ion-avatar>
+            <h2>{{profile.name}}</h2>
+          </div>
+        </div>
+        <!--
         <ion-avatar item-start>
-          <img src="../../assets/icon/favicon.ico">
+          <img src="https://avatars.dicebear.com/v2/identicon/{{product.uid}}.svg">
         </ion-avatar>
         <h2>Nombre usuario</h2>
+        -->
       </ion-item>
 
       <img  [src]="product.image"/>

@@ -21,7 +21,7 @@
       </ion-item>
 
       <div ngxErrors="email" #emailErrors="ngxErrors">
-        <div [ngxError]="['email', 'required']" [when]="['touched']">It should be a valid email</div>
+        <div [ngxError]="['email', 'required']" [when]="['touched']">No es un email válido</div>
       </div>
 
       <ion-item [ngClass]="{ invalid: passwordErrors.hasError('*', ['touched']) }">
@@ -29,14 +29,14 @@
       </ion-item>
 
       <div ngxErrors="password" #passwordErrors="ngxErrors">
-        <div [ngxError]="['minlength', 'required']" [when]="['touched']">It should be at least 6 characters</div>
+        <div [ngxError]="['minlength', 'required']" [when]="['touched']">Debe tener como mínimo 6 caracteres</div>
       </div>
     </ion-list>
 
     <div padding-horizontal>
       <div class="form-error">{{signupError}}</div>
 
-      <button ion-button full type="submit" [disabled]="!form.valid">Sign up</button>
+      <button ion-button full type="submit" [disabled]="!form.valid">Registro</button>
     </div>
   </form>
 </ion-content>

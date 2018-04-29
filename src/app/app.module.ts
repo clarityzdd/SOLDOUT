@@ -12,6 +12,11 @@ import { MyProductsPage } from "../pages/my-products/my-products";
 import { SignupPage} from "../pages/signup/signup";
 import { SearchProductPage} from "../pages/search-product/search-product";
 import { EditProductPage } from "../pages/edit-product/edit-product";
+import {ChatPage} from "../pages/chat/chat";
+import {CreateProfilePage} from "../pages/create-profile/create-profile";
+import {ProfilePage} from "../pages/profile/profile";
+import {EditProfilePage} from "../pages/edit-profile/edit-profile";
+import {SideMenuPage} from "../pages/side-menu/side-menu";
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -20,13 +25,12 @@ import { AngularFireDatabaseModule } from "angularfire2/database";
 import { AngularFireAuth, AngularFireAuthModule } from "angularfire2/auth"
 import { AngularFireModule } from "angularfire2";
 
-
 import {ProductListService} from "../services/product-list/product-list.service";
 import { AuthService} from "../services/auth.service";
-import { FIREBASE_CONFIG } from "../config/firebase.credentials";
-
 import {ToastService} from "../services/toast.service";
-import {ChatPage} from "../pages/chat/chat";
+import { FIREBASE_CONFIG } from "../config/firebase.credentials";
+import {ProfileService} from "../services/profile.service";
+
 
 
 
@@ -42,6 +46,11 @@ import {ChatPage} from "../pages/chat/chat";
     SearchProductPage,
     EditProductPage,
     ChatPage,
+    CreateProfilePage,
+    ProfilePage,
+    EditProfilePage,
+    SideMenuPage,
+
   ],
   imports: [
     BrowserModule,
@@ -64,6 +73,10 @@ import {ChatPage} from "../pages/chat/chat";
     SearchProductPage,
     EditProductPage,
     ChatPage,
+    CreateProfilePage,
+    ProfilePage,
+    EditProfilePage,
+    SideMenuPage,
   ],
   providers: [
     StatusBar,
@@ -73,6 +86,7 @@ import {ChatPage} from "../pages/chat/chat";
     AuthService,
     AngularFireAuth,
     ToastService,
+    ProfileService,
   ]
 })
 export class AppModule {}

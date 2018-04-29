@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+import { NavController, NavParams } from 'ionic-angular';
+import { AngularFireDatabase } from 'angularfire2/database';
 import {ProductItem} from "../../models/product-item/product-item.model";
 import {AuthService} from "../../services/auth.service";
 
 
-//@IonicPage()
+
 @Component({
   selector: 'page-chat',
   templateUrl: 'chat.html',

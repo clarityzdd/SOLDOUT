@@ -15,7 +15,8 @@ export class EditProductPage {
 
   product: ProductItem;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private auth: AuthService, private list: ProductListService, private toast: ToastService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+              private auth: AuthService, private list: ProductListService, private toast: ToastService) {
     this.product = this.navParams.get('product');
     console.log(this.product);
   }

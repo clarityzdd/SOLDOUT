@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController } from 'ionic-angular';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../../services/auth.service";
-import {TabsPage} from "../tabs/tabs";
+import {CreateProfilePage} from "../create-profile/create-profile";
 
 /**
  * Generated class for the SignupPage page.
@@ -39,7 +39,7 @@ export class SignupPage {
       password: data.password
     };
     this.auth.signUp(credentials).then(
-      () => this.navCtrl.setRoot(TabsPage),
+      () => this.navCtrl.setRoot(CreateProfilePage),
       error => this.signupError = error.message
     );
   }
