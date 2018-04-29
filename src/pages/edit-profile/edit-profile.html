@@ -12,7 +12,6 @@
 
 </ion-header>
 
-
 <ion-content padding>
   <ion-list>
     <ion-item>
@@ -24,5 +23,6 @@
       <ion-input [(ngModel)]="profile.address" type="text" name="address" placeholder="{{(profileDataObservable | async)?.address}}"></ion-input>
     </ion-item><br>
     <button ion-button round clear block color="primary" (click)="saveProfile(profile)">Guardar</button>
+    <button ion-button round clear block color="primary" (click)="goToRoot()">Volver</button>
   </ion-list>
 </ion-content>

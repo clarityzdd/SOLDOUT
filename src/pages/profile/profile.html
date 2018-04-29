@@ -18,14 +18,13 @@
       <ion-card-content>
         <ion-card-title>Nombre</ion-card-title>
         <p>{{( profileDataObservable | async)?.name}}</p>
-        <ion-card-title>Correo Electronico</ion-card-title>
-        <p>{{( profileDataObservable | async)?.email}}</p>
         <ion-card-title>Direccion</ion-card-title>
         <p>{{( profileDataObservable | async)?.address}}</p>
       </ion-card-content>
     </ion-card>
     <ion-item>
       <button ion-button block clear (click)="editProfile()">Editar</button>
+      <button ion-button round clear block color="primary" (click)="goToRoot()">Volver</button>
     </ion-item>
   </ion-list>
 

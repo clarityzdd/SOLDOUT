@@ -7,6 +7,7 @@ import {TabsPage} from "../tabs/tabs";
 import {Observable} from "rxjs/Observable";
 import {EditProfilePage} from "../edit-profile/edit-profile";
 import {ProfileService} from "../../services/profile.service";
+import {SideMenuPage} from "../side-menu/side-menu";
 
 /**
  * Generated class for the ProfilePage page.
@@ -56,6 +57,10 @@ export class ProfilePage {
 
   getCurrentUserProfileImage() {
     return this.pService.getCurrentProfileImage();
+  }
+
+  goToRoot() {
+    this.navCtrl.setRoot(SideMenuPage);
   }
 
 }

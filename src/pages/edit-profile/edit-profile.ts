@@ -5,6 +5,7 @@ import {AngularFireAuth} from "angularfire2/auth";
 import {Profile} from "../../models/profile.model";
 import {ProfilePage} from "../profile/profile";
 import {Observable} from "rxjs/Observable";
+import {SideMenuPage} from "../side-menu/side-menu";
 
 /**
  * Generated class for the EditProfilePage page.
@@ -40,10 +41,15 @@ export class EditProfilePage {
   }
 
   editProfile(profile: Profile) {
+
     this.afAuth.authState.take(1).subscribe(auth => {
-      this.db.object(`user-list/${auth.uid}`).set(profile).then(() => {
+      this.db.object(`user-list/${auth.uid}`).update(profile).then(() => {
         this.navCtrl.setRoot(ProfilePage);
       })
     })
+  }
+
+  goToRoot() {
+    this.navCtrl.setRoot(SideMenuPage);
   }
 }
