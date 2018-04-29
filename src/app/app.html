@@ -3,8 +3,13 @@
     <ion-toolbar>
       <ion-title>
         <ion-avatar item-start>
-          <img src="../assets/imgs/identicon.png" alt="User Profile Image">
+          <!--
+          <img src="https://avatars.dicebear.com/v2/identicon/{{this.getUserId()}}.svg" alt="User Profile Image">
+-->
+          <img src="{{getCurrentUserProfileImage()}}" alt="User Profile Image">
+
         </ion-avatar>
+        <br>
         {{this.auth.getEmail()}}
       </ion-title>
     </ion-toolbar>

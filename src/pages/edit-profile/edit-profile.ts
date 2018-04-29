@@ -25,7 +25,7 @@ export class EditProfilePage {
   constructor(public navCtrl: NavController, public navParams: NavParams,
               private afAuth: AngularFireAuth, private db: AngularFireDatabase,
               ) {
-    console.log(this.profile);
+
   }
 
   ionViewDidLoad() {

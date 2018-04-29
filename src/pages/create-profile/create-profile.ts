@@ -4,6 +4,7 @@ import {TabsPage} from "../tabs/tabs";
 import {AngularFireAuth} from "angularfire2/auth";
 import {AngularFireDatabase} from "angularfire2/database";
 import {Profile} from "../../models/profile.model";
+import {ProfileService} from "../../services/profile.service";
 
 /**
  * Generated class for the CreateProfilePage page.
@@ -22,9 +23,11 @@ export class CreateProfilePage {
   profile = {} as Profile;
 
   constructor(private afAuth: AngularFireAuth, private db: AngularFireDatabase,
-    public navCtrl: NavController, public navParams: NavParams) {
+    public navCtrl: NavController, public navParams: NavParams,
+    private pService: ProfileService) {
     this.profile.email = this.afAuth.auth.currentUser.email;
     this.profile.uid = this.afAuth.auth.currentUser.uid;
+    this.profile.image = `https://avatars.dicebear.com/v2/identicon/${this.profile.uid}.svg`;
   }
 
   ionViewDidLoad() {

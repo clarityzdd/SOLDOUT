@@ -28,6 +28,7 @@ import {ProductListService} from "../services/product-list/product-list.service"
 import { AuthService} from "../services/auth.service";
 import {ToastService} from "../services/toast.service";
 import { FIREBASE_CONFIG } from "../config/firebase.credentials";
+import {ProfileService} from "../services/profile.service";
 
 
 
@@ -80,6 +81,7 @@ import { FIREBASE_CONFIG } from "../config/firebase.credentials";
     AuthService,
     AngularFireAuth,
     ToastService,
+    ProfileService,
   ]
 })
 export class AppModule {}
