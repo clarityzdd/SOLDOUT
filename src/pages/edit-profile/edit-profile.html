@@ -7,12 +7,22 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>editProfile</ion-title>
+    <ion-title>Editando Perfil</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-
+  <ion-list>
+    <ion-item>
+      <ion-label>Nombre</ion-label>
+      <ion-input [(ngModel)]="profile.name" type="text" name="name" placeholder="{{(profileDataObservable | async)?.name}}"></ion-input>
+    </ion-item><br>
+    <ion-item>
+      <ion-label>Direccion</ion-label>
+      <ion-input [(ngModel)]="profile.address" type="text" name="address" placeholder="{{(profileDataObservable | async)?.address}}"></ion-input>
+    </ion-item><br>
+    <button ion-button round clear block color="primary" (click)="saveProfile(profile)">Guardar</button>
+  </ion-list>
 </ion-content>

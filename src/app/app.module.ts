@@ -12,6 +12,10 @@ import { MyProductsPage } from "../pages/my-products/my-products";
 import { SignupPage} from "../pages/signup/signup";
 import { SearchProductPage} from "../pages/search-product/search-product";
 import { EditProductPage } from "../pages/edit-product/edit-product";
+import {ChatPage} from "../pages/chat/chat";
+import {CreateProfilePage} from "../pages/create-profile/create-profile";
+import {ProfilePage} from "../pages/profile/profile";
+import {EditProfilePage} from "../pages/edit-profile/edit-profile";
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -22,12 +26,8 @@ import { AngularFireModule } from "angularfire2";
 
 import {ProductListService} from "../services/product-list/product-list.service";
 import { AuthService} from "../services/auth.service";
-import { FIREBASE_CONFIG } from "../config/firebase.credentials";
-
 import {ToastService} from "../services/toast.service";
-import {ChatPage} from "../pages/chat/chat";
-import {CreateProfilePage} from "../pages/create-profile/create-profile";
-import {ProfilePage} from "../pages/profile/profile";
+import { FIREBASE_CONFIG } from "../config/firebase.credentials";
 
 
 
@@ -45,6 +45,7 @@ import {ProfilePage} from "../pages/profile/profile";
     ChatPage,
     CreateProfilePage,
     ProfilePage,
+    EditProfilePage,
   ],
   imports: [
     BrowserModule,
@@ -69,6 +70,7 @@ import {ProfilePage} from "../pages/profile/profile";
     ChatPage,
     CreateProfilePage,
     ProfilePage,
+    EditProfilePage,
   ],
   providers: [
     StatusBar,

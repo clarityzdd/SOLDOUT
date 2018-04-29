@@ -2,9 +2,10 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {AngularFireAuth} from "angularfire2/auth";
 import {Profile} from "../../models/profile.model";
-import {AngularFireDatabase, AngularFireObject} from "angularfire2/database";
+import {AngularFireDatabase} from "angularfire2/database";
 import {TabsPage} from "../tabs/tabs";
 import {Observable} from "rxjs/Observable";
+import {EditProfilePage} from "../edit-profile/edit-profile";
 
 /**
  * Generated class for the ProfilePage page.
@@ -20,7 +21,6 @@ import {Observable} from "rxjs/Observable";
 })
 export class ProfilePage {
 
-  profileData: AngularFireObject<Profile>;
   profileDataObservable: Observable<Profile>;
   profile = {} as Profile;
 
@@ -43,7 +43,10 @@ export class ProfilePage {
   }
 
   editProfile() {
-
+    var test = this.navCtrl.setRoot(EditProfilePage).then(() =>console.log("Very Nice"),
+      error => console.error(error));
+    console.log(test);
+    return test;
   }
 
 }

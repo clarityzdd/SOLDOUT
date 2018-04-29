@@ -26,18 +26,14 @@ export class MyProductsPage {
               private list: ProductListService,
               private toast: ToastService,
   ) {
-
     this.productRef = firebase.database().ref('/product-list');
-
     this.productRef.on('value', productList => {
       let products = [];
       productList.forEach( name => {
         products.push(name.val());
         return false;
       });
-
       this.productList = products.reverse();
-
     });
 
   }
